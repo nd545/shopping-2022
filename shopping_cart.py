@@ -41,10 +41,17 @@ def to_usd(my_price):
 
 print(products)
 
+
+
+
 #ASK FOR USER INPUT
 product_ID = input("Please input a product identifier:")
 
 print(product_ID) #>9
+
+while True:
+    if product_ID =="done"
+    break
 
 
 
