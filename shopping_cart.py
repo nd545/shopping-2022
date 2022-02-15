@@ -1,5 +1,22 @@
 # shopping_cart.py
 
+
+ #A grocery store name of your choice
+ #A grocery store phone number and/or website URL and/or address of choice
+ #The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
+ #The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
+ #The total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
+ #The amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
+ #The total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
+ #A friendly message thanking the customer and/or encouraging the customer to shop again
+
+
+
+
+
+
+
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -43,15 +60,15 @@ print(products)
 
 
 
+while True:
 
 #ASK FOR USER INPUT
-product_ID = input("Please input a product identifier:")
+    product_id = input("Please input a product identifier: ")
+    print(product_id) #> "9"
+    print(type(product_id)) #> str
+    if product_id == "DONE":
+        break
 
-print(product_ID) #>9
-
-while True:
-    if product_ID =="done"
-    break
 
 
 
@@ -63,18 +80,17 @@ matching_products = []
 
 
 for x in products:
-    #if x == 3:
-        #____.append(x)
+        #if x == 3:
+        #    ___.append(x)
         #print(x)
-        #print(x("id"))
-        if str(x["id"]) == str(product_ID)
-        # this is a match
-        matching_products.append(x)
-print(matching_products)      
+        #print(x["id"])
+        if str(x["id"]) == str(product_id):
+            # this is a match
+            matching_products.append(x)
 
-
-# PRINT THE NAME OF THE MATCHING PRODUCT
-print(type(matching_products))
-print(len(matching_products))
-matching_Product = matching_products[0]
-print(matching_Product["name"],matching_Product["price"])
+    #print(matching_products)
+    #print(type(matching_products))
+    #print(len(matching_products))
+    # print the name of the matching product
+matching_product = matching_products[0]
+print(matching_product["name"], matching_product["price"])
