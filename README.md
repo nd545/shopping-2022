@@ -6,7 +6,7 @@
 
 #Installation
 
-Clone or download from [Github source] (https://github.com/s2t2/shopping-cart-screencast)
+Clone or download from [Github source] (https://github.com/nd545/shopping-2022)
 
 ```sh
 cd shopping-cart-screencast
