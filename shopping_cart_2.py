@@ -1,5 +1,6 @@
 
 from operator import truediv
+from datetime import date, datetime
 
 
 products = [
@@ -61,14 +62,29 @@ while True:
 # INFO DISPLAY/ OUTPUT
 
 #print(selected_ids)
+print("NIKI'S MINIMART")
+print("----------------")
+print("www.nikisminis.com")
+print("---------------")
+today = date.today()
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+print("CHECKOUT AT:" +  " " + str(today) + " " + str(current_time))
 
 for selected_id in selected_ids:
         matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
         matching_product = matching_products[0]
         total_price = total_price + matching_product["price"]
+        tax_owed= (total_price + matching_product["price"]) * 0.0875
         print("SELECTED PRODUCT: " + matching_product ["name"] + " " + str(matching_product["price"]))
+        final_total = total_price + tax_owed
 
-print("TOTAL PRICE: " + str(total_price))
+print("----------------")
+print("SUBTOTAL: " + str(to_usd(total_price)))      
+print("TAX OWED:" + str((tax_owed)))
+print("TOTAL PRICE:" + str(final_total))
+print("THANKS, SEE YOU AGAIN SOON!")
+
 
 
 #A grocery store name of your choice
