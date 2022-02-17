@@ -1,7 +1,7 @@
-
+import os 
+from dotenv import load_dotenv 
 from operator import truediv
 from datetime import date, datetime
-
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -55,9 +55,8 @@ while True:
     if selected_id == "DONE":
         break
     else:
-            
-        
         selected_ids.append(selected_id)
+
 
 # INFO DISPLAY/ OUTPUT
 
@@ -81,8 +80,8 @@ for selected_id in selected_ids:
 
 print("----------------")
 print("SUBTOTAL: " + str(to_usd(total_price)))      
-print("TAX OWED:" + str((tax_owed)))
-print("TOTAL PRICE:" + str(final_total))
+print("TAX OWED:" + str((to_usd(tax_owed))))
+print("TOTAL PRICE:" + str(to_usd(final_total)))
 print("THANKS, SEE YOU AGAIN SOON!")
 
 
