@@ -88,11 +88,7 @@ for selected_id in selected_ids:
 
 
 
-reciept_body = ("----------------\n",
-"\nSUBTOTAL: " + str(to_usd(total_price)),
-"\nTAX OWED:" + str((to_usd(tax_owed))),
-"\nTOTAL PRICE:" + str(to_usd(final_total)),
-"\nTHANKS, SEE YOU AGAIN SOON!")
+reciept_body = ("----------------\n" "SUBTOTAL: " + str(to_usd(total_price)) "\nTAX OWED:" + str((to_usd(tax_owed))) "\nTOTAL PRICE:" + str(to_usd(final_total)) "\nTHANKS, SEE YOU AGAIN SOON!")
 
 print(reciept_body)
 
