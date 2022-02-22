@@ -85,12 +85,12 @@ for selected_id in selected_ids:
         print("SELECTED PRODUCT: " + matching_product ["name"] + " " + str(matching_product["price"]))
         final_total = total_price + tax_owed
 
+print("----------------")
+print("SUBTOTAL: " + str(to_usd(total_price)))      
+print("TAX OWED:" + str((to_usd(tax_owed))))
+print("TOTAL PRICE:" + str(to_usd(final_total)))
+print("THANKS, SEE YOU AGAIN SOON!")
 
-
-
-reciept_body = ("----------------\n" "SUBTOTAL: " + str(to_usd(total_price)) "\nTAX OWED:" + str((to_usd(tax_owed))) "\nTOTAL PRICE:" + str(to_usd(final_total)) "\nTHANKS, SEE YOU AGAIN SOON!")
-
-print(reciept_body)
 
 
 
