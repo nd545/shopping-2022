@@ -18,3 +18,7 @@ cd shopping-cart-screencast
 ```py
 python shopping_cart.py
 ```
+
+```.env
+ TAX_RATE= 0.0875 #variable to change the tax rate
+```

@@ -2,6 +2,12 @@ import os
 from dotenv import load_dotenv 
 from operator import truediv
 from datetime import date, datetime
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+load_dotenv()
+
+
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -69,12 +75,13 @@ today = date.today()
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
 print("CHECKOUT AT:" +  " " + str(today) + " " + str(current_time))
+tax_owed = 0
 
 for selected_id in selected_ids:
         matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
         matching_product = matching_products[0]
         total_price = total_price + matching_product["price"]
-        tax_owed= (total_price + matching_product["price"]) * 0.0875
+        tax_owed= tax_owed + ((matching_product["price"]) * float(os.getenv("TAX_RATE")))
         print("SELECTED PRODUCT: " + matching_product ["name"] + " " + str(matching_product["price"]))
         final_total = total_price + tax_owed
 
@@ -84,6 +91,42 @@ print("TAX OWED:" + str((to_usd(tax_owed))))
 print("TOTAL PRICE:" + str(to_usd(final_total)))
 print("THANKS, SEE YOU AGAIN SOON!")
 
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
+SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
+
+client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
+print("CLIENT:", type(client))
+
+subject = "Your Receipt from Niki's Minis"
+
+html_content = "Hello World"
+print("HTML:", html_content)
+
+message = Mail(from_email=SENDER_ADDRESS, to_emails=SENDER_ADDRESS, subject=subject, html_content=html_content)
+
+try:
+    response = client.send(message)
+
+    print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
+    print(response.status_code) #> 202 indicates SUCCESS
+    print(response.body)
+    print(response.headers)
+
+except Exception as err:
+    print(type(err))
+    print(err)
+html_list_items = "<li>You ordered: Product 1</li>"
+html_list_items += "<li>You ordered: Product 2</li>"
+html_list_items += "<li>You ordered: Product 3</li>"
+
+html_content = f"""
+<h3>Hello this is your receipt</h3>
+<p>Date: ____________</p>
+<ol>
+    {html_list_items}
+</ol>
+"""
+print(html_content)
 
 
 #A grocery store name of your choice
